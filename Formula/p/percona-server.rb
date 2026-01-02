@@ -80,11 +80,6 @@ class PerconaServer < Formula
     # Find Homebrew OpenLDAP instead of the macOS framework
     inreplace "cmake/ldap.cmake", "NAMES ldap_r ldap", "NAMES ldap"
 
-    # Fix mysqlrouter_passwd RPATH to link to metadata_cache.so
-    inreplace "router/src/http/src/CMakeLists.txt",
-              "ADD_INSTALL_RPATH(mysqlrouter_passwd \"${ROUTER_INSTALL_RPATH}\")",
-              "\\0\nADD_INSTALL_RPATH(mysqlrouter_passwd \"${RPATH_ORIGIN}/../${ROUTER_INSTALL_PLUGINDIR}\")"
-
     # Disable ABI checking
     inreplace "cmake/abi_check.cmake", "RUN_ABI_CHECK 1", "RUN_ABI_CHECK 0" if OS.linux?
 
