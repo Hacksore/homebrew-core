@@ -18,7 +18,6 @@ class Opencode < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "d525cd1368cddddc44c68d1af96a2d71b9aef09395e0f562c78a3d18f8331b1f"
   end
 
-  depends_on "node"
   depends_on "ripgrep"
 
   def install
